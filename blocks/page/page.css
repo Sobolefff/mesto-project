@@ -1,0 +1,12 @@
+.page {  
+    max-width: 1280px;
+    height: auto;
+    background-color: #000000;
+    margin: 0 auto;
+    padding: 45px 0 60px;
+    box-sizing: border-box;
+    font-family: 'Inter', Arial, sans-serif;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
