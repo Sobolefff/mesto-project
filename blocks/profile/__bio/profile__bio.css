@@ -3,3 +3,9 @@
     color: #FFFFFF;
     align-items: center;
 }
+
+@media (max-width: 767px) {
+  .profile__bio {
+    flex-flow: column;
+  }
+}
