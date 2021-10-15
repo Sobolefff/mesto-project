@@ -6,7 +6,7 @@
     align-content: center;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 581px) {
   .profile {
     flex-flow: column;
   }

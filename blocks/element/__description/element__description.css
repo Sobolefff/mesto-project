@@ -1,6 +1,9 @@
 .element__description {
+  margin-top: 25px;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   width: 100%;
   max-width: 246px;
+  box-sizing: border-box;
 }
