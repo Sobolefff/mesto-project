@@ -1,0 +1,13 @@
+.popup {
+    display: none; 
+}
+.popup::before {
+    content: '';
+    position: fixed;
+    background-color: #000000;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    width: 100vw;
+    height: 100vh;
+}
