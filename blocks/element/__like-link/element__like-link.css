@@ -7,6 +7,9 @@
     background-image: url(../../../images/icons/like.svg);
     background-size: cover;
     background-repeat: no-repeat;
+    cursor: pointer;
+    border: none;
+    padding: 0;
 }
 
 .element__like-link:hover {
