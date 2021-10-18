@@ -8,3 +8,10 @@
     gap: 51px;
     box-sizing: border-box;
 }
+
+@media (max-width: 879px) {
+    .content {
+        margin: 42px 0 48px;
+        gap: 36px;
+    }
+}

@@ -5,10 +5,9 @@
     line-height: 48px;
 }
 
-@media (max-width: 581px) {
+@media (max-width: 879px) {
     .profile__title {
         font-size: 27px;
         line-height: 33px;
-        text-align: center;
     }
 }

@@ -1,10 +1,12 @@
 .element__like-link {
-    width: 22px;
+    margin-right: 5px;
+    min-width: 22px;
     height: 19px;
     display: block;
     text-decoration: none;
     background-image: url(../../../images/icons/like.svg);
-    
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .element__like-link:hover {
