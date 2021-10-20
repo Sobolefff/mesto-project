@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,13 +16,11 @@
     </header>
     <main class="content">
         <section class="profile">
-            <div class="profile__bio">
-                <img src="./images/avatar.jpg" alt="аватар" class="profile__avatar">
-                <div class="profile__info">
-                    <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button id="modal" type="button"  class="profile__edit-button"></button>
-                    <p class="profile__subtitle">Исследователь океана</p> 
-                </div>
+            <img src="./images/avatar.jpg" alt="аватар" class="profile__avatar">
+            <div class="profile__info">
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <button id="modal" type="button"  class="profile__edit-button"></button>
+                <p class="profile__subtitle">Исследователь океана</p> 
             </div>
             <button type="button" class="profile__add-button"></button>
         </section>
@@ -32,7 +30,7 @@
                     <img src="./images/kara4.jpg" alt="Карачаевск" class="element__image">
                     <div class="element__description">
                         <h3 class="element__title">Карачаевск</h3>
-                        <button type="button" class="element__like-link element__like-link_liked">
+                        <button id="like" type="button" class="element__like-link element__like-link_liked">
                         </button>
                     </div>
                 </li>
@@ -78,8 +76,9 @@
         <p class="footer__copyright">© 2021 Петр Соболев</p>
     </footer>
     <div id="popup" class="popup">
-            <form name="profile-add" class="popup__container">
-                <h2 class="popup__heading">Редактировать профиль</h2>
+        <div class="popup__container">
+            <h2 class="popup__heading">Редактировать профиль</h2>
+            <form name="profile-add">
                 <fieldset class="popup__input-container">
                     <input name="name" type="text" class="popup__input-text" value="Жак-Ив Кусто">
                     <input name="description" type="text" class="popup__input-text" value="Исследователь океана">
@@ -87,11 +86,12 @@
                 <fieldset class="popup__submit">
                     <button type="submit" class="popup__save-button">Сохранить</button>
                 </fieldset>
-                <button id="close" type="button" class="popup__close-button"></button>
             </form>
+            <button id="close" type="button" class="popup__close-button"></button>
+        </div>
     </div>
-
-    <!--Добавил скрипт для открытия и закрытия модального окна. Открыть - кнопкой редактировать профиль, закрыть на крестик-->
+    <!--Добавил скрипт для открытия и закрытия модального окна и закрашивание кнопки лайка у первой фотки. 
+        Открыть - кнопкой редактировать профиль, закрыть на крестик-->
     <script>
         document.querySelector('#modal').addEventListener('click', function() {
         document.getElementById('popup').classList.toggle("popup_opened");
@@ -99,6 +99,10 @@
         document.querySelector('#close').addEventListener('click', function() {
         document.getElementById('popup').classList.toggle("popup_opened");
         })
+        document.querySelector('#like').addEventListener('click', function() {
+        document.getElementById('like').classList.toggle("element__like-link_liked");
+        })
+
     </script>
 </body>
 </html>

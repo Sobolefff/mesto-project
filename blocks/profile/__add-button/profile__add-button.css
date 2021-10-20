@@ -14,16 +14,25 @@
     justify-content: center;
     cursor: pointer;
     padding: 0;
+    margin-left: auto;
+    transition: opacity 0.3s;
 }
 
 .profile__add-button:hover {
     opacity: .6;
 }
 
+@media (max-width: 879px) {
+    .profile__add-button {
+        width: 12vw;
+    }
+}
+
 @media (max-width: 581px) {
     .profile__add-button {
-        margin-top: 36px;
+        margin: 32px auto 0;
         max-width: 282px;
+        width: 100%;
         background-size: 16px;
     }
 }
