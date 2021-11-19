@@ -87,21 +87,9 @@
                     <button type="submit" class="popup__save-button">Сохранить</button>
                 </fieldset>
             </form>
-            <button id="close" type="button" class="popup__close-button"></button>
+            <button type="button" class="popup__close-button"></button>
         </div>
     </div>
-    <!--Добавил скрипт для открытия и закрытия модального окна и закрашивание кнопки лайка у первой фотки. 
-        Открыть - кнопкой редактировать профиль, закрыть на крестик-->
-    <script>
-        document.querySelector('#modal').addEventListener('click', function() {
-        document.getElementById('popup').classList.toggle("popup_opened");
-        })
-        document.querySelector('#close').addEventListener('click', function() {
-        document.getElementById('popup').classList.toggle("popup_opened");
-        })
-        document.querySelector('#like').addEventListener('click', function() {
-        document.getElementById('like').classList.toggle("element__like-link_liked");
-        })
-    </script>
+    <script src="./pages/index.js"></script>
 </body>
 </html>
