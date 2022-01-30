@@ -1,6 +1,6 @@
 // константы попап профиля
 const popupEditProfile = document.querySelector('#popup-profile-edit');
-const editButton = document.querySelector('#profile__edit-button');
+const buttonEdit = document.querySelector('#profile__edit-button');
 const formElement = document.querySelector('#popup-edit-form');
 const nameInput = formElement.querySelector('#name');
 const activityInput = formElement.querySelector('#description');
@@ -9,15 +9,15 @@ const activityProfile = document.querySelector('.profile__subtitle');
 
 // константы попап для карточек
 const popupElementAddCard = document.querySelector('#popup-add-card');
-const addButton = document.querySelector('.profile__add-button');
+const buttonAdd = document.querySelector('.profile__add-button');
 const formElementAddCard = popupElementAddCard.querySelector('#popup-add-card-form');
 const titleInput = formElementAddCard.querySelector('#add-card-title');
 const linkInput = formElementAddCard.querySelector('#add-card-link');
-const popupAddCardButton = formElementAddCard.querySelector('#popup-add-card_save-button'); 
+const popupAddCardButton = popupElementAddCard.querySelector('#popup-add-card__save-button'); 
 
 // константы просмотр фото на весь экран
 const popupImage = document.querySelector('#popup-viewing'); 
-const closeButtonImage = popupImage.querySelector('.popup__close-button'); 
+const buttonImageClose = popupImage.querySelector('.popup__close-button'); 
 const popupImageLink = popupImage.querySelector('.popup__image'); 
 const popupImageTitle = popupImage.querySelector('.popup__image-title');
 
@@ -64,7 +64,7 @@ allPopups.forEach((popup) => {
         
     });
   });
-  
+
   // открытие попапа
   const openPopup = popupWindow => {
     popupWindow.classList.add('popup_opened');
@@ -76,20 +76,20 @@ allPopups.forEach((popup) => {
   };
 
   //клик по кнопке редактирования профиля
-  editButton.addEventListener('click', () => {
+  buttonEdit.addEventListener('click', () => {
     openPopup(popupEditProfile);
     nameInput.value = nameProfile.textContent; 
     activityInput.value = activityProfile.textContent;
   });
 
   // сохраняем профиль
-const formSubmitProfile = evt => {
+const submitFormProfile = evt => {
     evt.preventDefault(); 
     nameProfile.textContent = nameInput.value; 
     activityProfile.textContent = activityInput.value;
     closePopup(popupEditProfile);
   };
-  formElement.addEventListener('submit', formSubmitProfile); 
+  formElement.addEventListener('submit', submitFormProfile); 
 
    // удаление карточек
    const deleteCard = cardTemplate => {
@@ -123,26 +123,25 @@ const formSubmitProfile = evt => {
   };
   
   // добавляем карточки
-  const createdCards = initialCards.map(card => createCard(card) ); 
+  const createdCards = initialCards.map(card => createCard(card)); 
   
   cardList.append(...createdCards);
   
   // клик по плюсу
-  addButton.addEventListener('click', () => {
+  buttonAdd.addEventListener('click', () => {
     openPopup(popupElementAddCard);
     titleInput.value = ''; 
     linkInput.value = '';
   });
   
   // функция сохранения 
-  const formSubmitHandlerAddCard = evt => {
+  const submitFormHandlerAddCard = evt => {
     evt.preventDefault();
     const inputTitleValue = titleInput.value;
     const inputLinkValue = linkInput.value;
     const newCardName = createCard( {name: inputTitleValue, link: inputLinkValue});
     cardList.prepend(newCardName); 
-    disabledButton(popupCreateCardButton);
-    closePopup(formElementCreateCards);
+    closePopup(popupElementAddCard);
   };
-  formElementAddCard.addEventListener('submit', formSubmitHandlerAddCard); 
-  closeButtonImage.addEventListener('click', () => closePopup(popupImage));
+  formElementAddCard.addEventListener('submit', submitFormHandlerAddCard); 
+  buttonImageClose.addEventListener('click', () => closePopup(popupImage));
