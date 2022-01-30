@@ -19,77 +19,71 @@
             <img src="./images/avatar.jpg" alt="аватар" class="profile__avatar">
             <div class="profile__info">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
-                <button id="modal" type="button"  class="profile__edit-button"></button>
+                <button id="profile__edit-button" type="button" class="profile__edit-button"></button>
                 <p class="profile__subtitle">Исследователь океана</p> 
             </div>
-            <button type="button" class="profile__add-button"></button>
+            <button id="profile__add-button" type="button" class="profile__add-button"></button>
         </section>
         <section class="elements">
             <ul class="elements__list">
-                <li class="element">
-                    <img src="./images/kara4.jpg" alt="Карачаевск" class="element__image">
-                    <div class="element__description">
-                        <h3 class="element__title">Карачаевск</h3>
-                        <button id="like" type="button" class="element__like-link element__like-link_liked">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img src="./images/elbrus.jpg" alt="Эльбрус" class="element__image">
-                    <div class="element__description">
-                        <h3 class="element__title">Гора Эльбрус</h3>
-                        <button type="button" class="element__like-link"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img src="./images/dombai.jpg" alt="Домбай" class="element__image">
-                    <div class="element__description">
-                        <h3 class="element__title">Домбай</h3>
-                        <button type="button" class="element__like-link"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img src="./images/elbrus.jpg" alt="Эльбрус" class="element__image">
-                    <div class="element__description">
-                        <h3 class="element__title">Гора Эльбрус</h3>
-                        <button type="button" class="element__like-link"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img src="./images/dombai.jpg" alt="Домбай" class="element__image">
-                    <div class="element__description">
-                        <h3 class="element__title">Домбай</h3>
-                        <button type="button" class="element__like-link"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img src="./images/kara4.jpg" alt="Карачаевск" class="element__image">
-                    <div class="element__description">
-                        <h3 class="element__title">Карачаево-Черкессия</h3>
-                        <button type="button" class="element__like-link"></button>
-                    </div>
-                </li>
+
             </ul>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">© 2021 Петр Соболев</p>
     </footer>
-    <div id="popup" class="popup">
+
+    <div id="popup-profile-edit" class="popup">
         <div class="popup__container">
             <h2 class="popup__heading">Редактировать профиль</h2>
-            <form name="profile-add">
+            <form id="popup-edit-form" name="profile-add">
                 <fieldset class="popup__input-container">
-                    <input name="name" type="text" class="popup__input-text" value="Жак-Ив Кусто">
-                    <input name="description" type="text" class="popup__input-text" value="Исследователь океана">
+                    <input id="name" type="text" name="name" placeholder="Имя" value="" class="popup__input-text">
+                    <input id="description" type="text" name="description" placeholder="О себе" value="" class="popup__input-text">
                 </fieldset>
                 <fieldset class="popup__submit">
-                    <button type="submit" class="popup__save-button">Сохранить</button>
+                    <button id="popup-edit_save-button" type="submit" class="popup__save-button">Сохранить</button>
                 </fieldset>
             </form>
             <button type="button" class="popup__close-button"></button>
         </div>
     </div>
-    <script src="./pages/index.js"></script>
+
+    <div id='popup-add-card' class="popup">
+        <div class="popup__container">
+            <h2 class="popup__heading">Новое место</h2>
+            <form id="popup-add-card-form" name="card-add">
+                <fieldset class="popup__input-container">
+                    <input id="add-card-title" type="text" name="title" placeholder="Название" value="" class="popup__input-text">
+                    <input id="add-card-link" type="url" name="link" placeholder="Ссылка на фото" value="" class="popup__input-text">
+                </fieldset>
+                <fieldset class="popup__submit">
+                    <button id="popup-add-card_save-button" type="submit" class="popup__save-button">Добавить место</button>
+                </fieldset>
+            </form>
+            <button type="button" class="popup__close-button"></button>
+        </div>
+      </div>
+
+      <div id="popup-viewing" class="popup popup_viewing">
+        <div class="popup__image-container">
+          <img class="popup__image" alt="описание" src="#">
+          <button type="button" class="popup__close-button"></button>
+          <h3 class="popup__image-title">Описание</h3>
+        </div>
+      </div>
+
+    <template id="cardTemplate">
+        <li class="element">
+            <button type="button" class="element__remove-button"></button>
+            <img src="#" alt="шаблон" class="element__image">
+            <div class="element__description">
+                <h3 class="element__title">123</h3>
+                <button type="button" class="element__like-link"></button>
+            </div>
+        </li>
+    </template>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>
