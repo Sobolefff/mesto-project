@@ -65,14 +65,23 @@ allPopups.forEach((popup) => {
     });
   });
 
+  const setExitPopupByEsc = evt => {
+    if (evt.key === "Escape") {
+      closePopup(document.querySelector(".popup_opened"));
+    };
+  };
+
   // открытие попапа
   const openPopup = popupWindow => {
     popupWindow.classList.add('popup_opened');
+    document.addEventListener('keydown', setExitPopupByEsc);
   };
   
   // закрытие попапа
   const closePopup = popupWindow => {
+    document.removeEventListener('keydown', setExitPopupByEsc);
     popupWindow.classList.remove('popup_opened');
+    
   };
 
   //клик по кнопке редактирования профиля
@@ -145,3 +154,13 @@ const submitFormProfile = evt => {
   };
   formElementAddCard.addEventListener('submit', submitFormHandlerAddCard); 
   buttonImageClose.addEventListener('click', () => closePopup(popupImage));
+
+  //функция включения валидации
+  enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input-text',
+    submitButtonSelector: '.popup__save-button',
+    inactiveButtonClass: 'popup__save-button_disabled',
+    inputErrorClass: 'popup__input-text_error',
+    errorClass: 'popup__error_opened'
+  });

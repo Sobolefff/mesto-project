@@ -37,10 +37,16 @@
     <div id="popup-profile-edit" class="popup">
         <div class="popup__container">
             <h2 class="popup__heading">Редактировать профиль</h2>
-            <form id="popup-edit-form" name="profile-add">
+            <form id="popup-edit-form" name="profile-add" class="popup__form" novalidate>
                 <fieldset class="popup__input-container">
-                    <input id="name" type="text" name="name" placeholder="Имя" value="" class="popup__input-text">
-                    <input id="description" type="text" name="description" placeholder="О себе" value="" class="popup__input-text">
+                    <label class="popup__label">
+                        <input id="name" type="text" name="name" placeholder="Имя" value="" class="popup__input-text" minlength="2" maxlength="40" required>
+                        <span class="popup__error" id="name-error"></span>
+                    </label>
+                    <label class="popup__label">
+                        <input id="description" type="text" name="description" placeholder="О себе" value="" class="popup__input-text" minlength="2" maxlength="200" required>
+                        <span class="popup__error" id="description-error"></span>
+                    </label>
                 </fieldset>
                 <fieldset class="popup__submit">
                     <button id="popup-edit_save-button" type="submit" class="popup__save-button">Сохранить</button>
@@ -53,10 +59,16 @@
     <div id='popup-add-card' class="popup">
         <div class="popup__container">
             <h2 class="popup__heading">Новое место</h2>
-            <form id="popup-add-card-form" name="card-add">
+            <form id="popup-add-card-form" name="card-add" class="popup__form" novalidate>
                 <fieldset class="popup__input-container">
-                    <input id="add-card-title" type="text" name="title" placeholder="Название" value="" class="popup__input-text">
-                    <input id="add-card-link" type="url" name="link" placeholder="Ссылка на фото" value="" class="popup__input-text">
+                    <label class="popup__label">
+                        <input id="add-card-title" type="text" name="title" placeholder="Название" value="" class="popup__input-text" minlength="2" maxlength="30" required>
+                        <span class="popup__error" id="add-card-title-error"></span>
+                    </label>
+                    <label class="popup__label">
+                        <input id="add-card-link" type="url" name="link" placeholder="Ссылка на фото" value="" class="popup__input-text" required>
+                        <span class="popup__error" id="add-card-link-error"></span>
+                    </label>
                 </fieldset>
                 <fieldset class="popup__submit">
                     <button id="popup-add-card__save-button" type="submit" class="popup__save-button">Добавить место</button>
@@ -84,6 +96,7 @@
             </div>
         </li>
     </template>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 </html>
