@@ -1,4 +1,6 @@
+//import { validationConfig } from './configs.js';
 // валидация форм
+
 // скрытие ошибок
 const hideInputError = (formElement, inputElement, config) => {
     const { inputErrorClass, errorClass } = config 
@@ -55,3 +57,5 @@ const hideInputError = (formElement, inputElement, config) => {
       setEventListeners(form, props); 
     });
   };
+
+  export { enableValidation };

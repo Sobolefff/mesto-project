@@ -7,16 +7,15 @@
     <meta name="description" content="Страница с фотографиями">
     <meta name="keywords" content="Фотографии, фотки, места">
     <meta name="author" content="Петр Соболев">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
 </head>
 <body class="page">
     <header class="header">
-        <img src="./images/logo/logo.svg" alt="лого место" class="header__logo">
+        <img src="<%=require('./images/logo/logo.svg')%>" alt="лого место" class="header__logo">
     </header>
     <main class="content">
         <section class="profile">
-            <img src="./images/avatar.jpg" alt="аватар" class="profile__avatar">
+            <img src="<%=require('./images/avatar.jpg')%>" alt="аватар" class="profile__avatar">
             <div class="profile__info">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
                 <button id="profile__edit-button" type="button" class="profile__edit-button"></button>
@@ -96,7 +95,5 @@
             </div>
         </li>
     </template>
-    <script src="./scripts/validate.js"></script>
-    <script src="./scripts/index.js"></script>
 </body>
 </html>
