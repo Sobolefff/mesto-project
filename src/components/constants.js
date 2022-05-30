@@ -71,3 +71,17 @@ export {
     cardList,
     allPopups,
 }
+
+
+/*
+const deleteCard = cardTemplate => {
+  cardTemplate.querySelector('.element__remove-button').addEventListener('click', () => cardTemplate.remove());
+};
+
+// лайки
+
+const likeCard = cardTemplate => {
+  cardTemplate.querySelector('.element__like-link').addEventListener('click', evt => evt.target.classList.toggle('element__like-link_liked'));
+};
+
+*/

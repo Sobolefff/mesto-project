@@ -6,9 +6,7 @@ import {
     activityProfile
   } from './constants.js';
 
-
-
-const setExitPopupByEsc = evt => {
+  const setExitPopupByEsc = evt => {
     if (evt.key === "Escape") {
       closePopup(document.querySelector(".popup_opened"));
     };
@@ -27,16 +25,7 @@ const setExitPopupByEsc = evt => {
     
   };
 
-  // сохраняем профиль
-const submitFormProfile = evt => {
-    evt.preventDefault(); 
-    nameProfile.textContent = nameInput.value; 
-    activityProfile.textContent = activityInput.value;
-    closePopup(popupEditProfile);
-  };
-
   export {
       openPopup,
       closePopup,
-      submitFormProfile
   };

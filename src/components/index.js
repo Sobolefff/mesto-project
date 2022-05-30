@@ -10,6 +10,7 @@ import {
     popupElementAddCard,
     buttonAdd,
     formElementAddCard,
+    popupAddCardButton,
     titleInput,
     linkInput,
     popupImage,
@@ -24,7 +25,6 @@ import { validationConfig } from './configs.js';
 import {
   openPopup,
   closePopup,
-  submitFormProfile
 } from './modal.js';
 
 import { createCard } from './card.js';
@@ -32,15 +32,16 @@ import { createCard } from './card.js';
 // перебираем каждый попап
 allPopups.forEach((popup) => {
   popup.addEventListener('click', (evt) => {
-      if (evt.target.classList.contains('popup__close-button')) {
-        closePopup(popup) // закрыть по крестику
-      };
-      if (evt.target.classList.contains('popup_opened')) {
-        closePopup(popup) // закрыть по оверлею
-      };
-      
+      if (evt.target.classList.contains('popup__close-button') || evt.target.classList.contains('popup_opened')) {
+        closePopup(popup)
+      }
   });
 });
+
+const disabledButton = button => {
+  button.disabled = true;
+  button.classList.add(validationConfig.inactiveButtonClass);
+};
 
   //клик по кнопке редактирования профиля
   buttonEdit.addEventListener('click', () => {
@@ -48,6 +49,14 @@ allPopups.forEach((popup) => {
     nameInput.value = nameProfile.textContent; 
     activityInput.value = activityProfile.textContent;
   });
+
+  // сохраняем профиль
+const submitFormProfile = evt => {
+  evt.preventDefault(); 
+  nameProfile.textContent = nameInput.value; 
+  activityProfile.textContent = activityInput.value;
+  closePopup(popupEditProfile);
+};
 
   formElement.addEventListener('submit', submitFormProfile);
   
@@ -59,8 +68,7 @@ allPopups.forEach((popup) => {
   // клик по плюсу
   buttonAdd.addEventListener('click', () => {
     openPopup(popupElementAddCard);
-    titleInput.value = ''; 
-    linkInput.value = '';
+    formElementAddCard.reset();
   });
   
   // функция сохранения 
@@ -69,7 +77,8 @@ allPopups.forEach((popup) => {
     const inputTitleValue = titleInput.value;
     const inputLinkValue = linkInput.value;
     const newCardName = createCard( {name: inputTitleValue, link: inputLinkValue});
-    cardList.prepend(newCardName); 
+    cardList.prepend(newCardName);
+    disabledButton(popupAddCardButton);
     closePopup(popupElementAddCard);
   };
   formElementAddCard.addEventListener('submit', submitFormHandlerAddCard); 

@@ -1,4 +1,3 @@
-//import { validationConfig } from './configs.js';
 // валидация форм
 
 // скрытие ошибок
@@ -33,6 +32,8 @@ const hideInputError = (formElement, inputElement, config) => {
     buttonElement.classList.toggle(inactiveButtonClass, !isFormValid); 
     buttonElement.disabled = !isFormValid; 
   };
+
+  
   
   // Навешиваем обработчики
   const setEventListeners = (formElement, config) => {
