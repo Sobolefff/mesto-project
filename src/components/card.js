@@ -2,13 +2,11 @@ import { popupImageLink, popupImageTitle, popupImage } from "./constants.js";
 import { openPopup } from "./modal.js";
 
 // удаление карточек
-
 const deleteCard = cardTemplate => {
   cardTemplate.querySelector('.element__remove-button').addEventListener('click', () => cardTemplate.remove());
 };
 
 // лайки
-
 const likeCard = cardTemplate => {
   cardTemplate.querySelector('.element__like-link').addEventListener('click', evt => evt.target.classList.toggle('element__like-link_liked'));
 };

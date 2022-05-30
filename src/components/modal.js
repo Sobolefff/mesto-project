@@ -1,12 +1,4 @@
-import {
-    popupEditProfile,
-    nameInput,
-    activityInput,
-    nameProfile,
-    activityProfile
-  } from './constants.js';
-
-  const setExitPopupByEsc = evt => {
+ const setExitPopupByEsc = evt => {
     if (evt.key === "Escape") {
       closePopup(document.querySelector(".popup_opened"));
     };
