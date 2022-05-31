@@ -27,4 +27,4 @@
 ---
 ### Ссылка на GitHub Pages
 
-Проект доступен на GitHub Pages по [ссылке](https://sobolefff.github.io/mesto-project/ "Проект: Место")
+Проект доступен на GitHub Pages по [ссылке](https://sobolefff.github.io/mesto-project/ "Проект: Место Russia")
