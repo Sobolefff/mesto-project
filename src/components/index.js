@@ -28,6 +28,7 @@ import {
 } from './modal.js';
 
 import { createCard } from './card.js';
+import { getApi } from './api.js';
   
 // перебираем каждый попап
 allPopups.forEach((popup) => {
@@ -85,3 +86,4 @@ const submitFormProfile = evt => {
 
   //функция включения валидации
   enableValidation(validationConfig);
+getApi();
