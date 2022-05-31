@@ -13,7 +13,8 @@ const buttonAdd = document.querySelector('.profile__add-button');
 const formElementAddCard = popupElementAddCard.querySelector('#popup-add-card-form');
 const titleInput = formElementAddCard.querySelector('#add-card-title');
 const linkInput = formElementAddCard.querySelector('#add-card-link');
-const popupAddCardButton = popupElementAddCard.querySelector('#popup-add-card__save-button'); 
+const popupAddCardButton = popupElementAddCard.querySelector('#popup-add-card__save-button');
+const cardTemplate = document.querySelector('#cardTemplate');
 
 // константы просмотр фото на весь экран
 const popupImage = document.querySelector('#popup-viewing'); 
@@ -70,4 +71,5 @@ export {
     initialCards,
     cardList,
     allPopups,
+    cardTemplate
 }

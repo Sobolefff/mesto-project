@@ -62,7 +62,6 @@ const submitFormProfile = evt => {
   
   // добавляем карточки
   const createdCards = initialCards.map(card => createCard(card)); 
-  
   cardList.append(...createdCards);
   
   // клик по плюсу
