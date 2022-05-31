@@ -8,11 +8,13 @@ function deleteCard(evt) {
 function likeCard(evt) {
   evt.target.classList.toggle('element__like-link_liked');
 }
-const setEventListeners = (cardTemplate) => {
-  const like = cardTemplate.querySelector('.element__like-link');
-  const del = cardTemplate.querySelector('.element__remove-button');
-  like.addEventListener('click', likeCard);
-  del.addEventListener('click', deleteCard);
+
+//превью
+function preview(evt) {
+  popupImageLink.src = evt.target.src;
+  popupImageLink.alt = evt.target.alt;
+  popupImageTitle.textContent = popupImageLink.alt;
+  openPopup(popupImage);
 }
 
  //рендер карточек
@@ -24,21 +26,27 @@ const getTemplate = () => {
     .cloneNode(true);
 }; 
 
+//создаем карточки
     const createCard = card => {
     const cardTemplateElement = getTemplate();
     const image = cardTemplateElement.querySelector('.element__image');
-    const text = cardTemplateElement.querySelector('.element__title');
-    text.textContent = card.name;
+    const text = cardTemplateElement.querySelector('.element__title'); 
     image.src = card.link;
     image.alt = card.name;
-    image.addEventListener("click", () => { 
-      popupImageLink.src = image.src;
-      popupImageLink.alt = text.textContent;
-      popupImageTitle.textContent = text.textContent;
-      openPopup(popupImage);
-    });
+    text.textContent = card.name;
     setEventListeners(cardTemplateElement);
     return cardTemplateElement;
   };
+
+  
+  //вешаем слушатели
+  const setEventListeners = cardTemplate => {
+    const like = cardTemplate.querySelector('.element__like-link');
+    const del = cardTemplate.querySelector('.element__remove-button');
+    const img = cardTemplate.querySelector('.element__image');
+    like.addEventListener('click', likeCard);
+    del.addEventListener('click', deleteCard);
+    img.addEventListener("click", preview);
+  }
 
   export { createCard };
