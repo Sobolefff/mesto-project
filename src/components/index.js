@@ -41,7 +41,7 @@ import { getUserInfo, getCards } from './api.js';
   
 // перебираем каждый попап
 allPopups.forEach((popup) => {
-  popup.addEventListener('click', (evt) => {
+  popup.addEventListener('mouseup', (evt) => {
       if (evt.target.classList.contains('popup__close-button') || evt.target.classList.contains('popup_opened')) {
         closePopup(popup)
       }
@@ -94,8 +94,7 @@ const disabledButton = button => {
     evt.preventDefault();
     handlePlaceFormSubmit(evt, formElementAddCard, linkInput.value, titleInput.value);
   }); 
-  buttonImageClose.addEventListener('click', () => closePopup(popupImage));
-
+// Геннадий, спасибо за оперативное ревью! По поводу бага с событием клика вы наверное хотели сказать не mousedown а mouseup))
   
 
   Promise.all([getUserInfo(), getCards()])
