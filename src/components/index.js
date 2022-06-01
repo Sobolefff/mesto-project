@@ -15,20 +15,29 @@ import {
     linkInput,
     popupImage,
     buttonImageClose,
-    initialCards,
-    cardList,
     allPopups,
+    editAvatarBtn,
+    editAvatarBtnActive,
+    popupAvatar,
+    avatarForm,
+    profileAvatar,
+    popupSaveAvatarButton
 } from './constants.js';
 
 import { enableValidation } from './validate.js';
-import { validationConfig } from './configs.js';
+import { validateConfig } from './configs.js';
 import {
   openPopup,
   closePopup,
+  showEditBtn,
+  hiddenEditBtn,
+  handleAvatarFormSubmit,
+  handleProfileFormSubmit,
+  handlePlaceFormSubmit
 } from './modal.js';
 
-import { createCard } from './card.js';
-import { getApi } from './api.js';
+import { addPrependCard } from './card.js';
+import { getUserInfo, getCards } from './api.js';
   
 // перебираем каждый попап
 allPopups.forEach((popup) => {
@@ -39,9 +48,29 @@ allPopups.forEach((popup) => {
   });
 });
 
+editAvatarBtn.addEventListener('mouseover', () => {
+  showEditBtn(editAvatarBtnActive)
+});
+
+editAvatarBtn.addEventListener('mouseout', () => {
+  hiddenEditBtn(editAvatarBtnActive)
+});
+
+editAvatarBtn.addEventListener('click', () => {
+  openPopup(popupAvatar);
+  avatarForm.reset();
+  disabledButton(popupSaveAvatarButton);
+});
+
+avatarForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  disabledButton(popupSaveAvatarButton);
+  handleAvatarFormSubmit(evt, avatarForm);
+})
+
 const disabledButton = button => {
   button.disabled = true;
-  button.classList.add(validationConfig.inactiveButtonClass);
+  button.classList.add(validateConfig.inactiveButtonClass);
 };
 
   //клик по кнопке редактирования профиля
@@ -52,38 +81,44 @@ const disabledButton = button => {
   });
 
   // сохраняем профиль
-const submitFormProfile = evt => {
-  evt.preventDefault(); 
-  nameProfile.textContent = nameInput.value; 
-  activityProfile.textContent = activityInput.value;
-  closePopup(popupEditProfile);
-};
-
-  formElement.addEventListener('submit', submitFormProfile);
-  
-  // добавляем карточки
-  const createdCards = initialCards.map(card => createCard(card)); 
-  cardList.append(...createdCards);
+  formElement.addEventListener('submit', handleProfileFormSubmit);
   
   // клик по плюсу
   buttonAdd.addEventListener('click', () => {
     openPopup(popupElementAddCard);
     formElementAddCard.reset();
+    disabledButton(popupAddCardButton);
   });
   
-  // функция сохранения 
-  const submitFormHandlerAddCard = evt => {
+  formElementAddCard.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    const inputTitleValue = titleInput.value;
-    const inputLinkValue = linkInput.value;
-    const newCardName = createCard( {name: inputTitleValue, link: inputLinkValue});
-    cardList.prepend(newCardName);
-    disabledButton(popupAddCardButton);
-    closePopup(popupElementAddCard);
-  };
-  formElementAddCard.addEventListener('submit', submitFormHandlerAddCard); 
+    handlePlaceFormSubmit(evt, formElementAddCard, linkInput.value, titleInput.value);
+  }); 
   buttonImageClose.addEventListener('click', () => closePopup(popupImage));
 
+  
+
+  Promise.all([getUserInfo(), getCards()])
+  .then(([userData, cards]) => {
+    
+    profileAvatar.src = userData.avatar;
+    nameProfile.textContent = userData.name;
+    activityProfile.textContent = userData.about;
+    for (let i = 0; i < cards.length; i++) {
+      const like = cards[i].likes;
+      const cardOwnerID = cards[i].owner._id;
+      const cardID = cards[i]._id;
+      const likesOwnerID = [];
+
+      like.forEach(element => {
+        likesOwnerID.push(element._id);
+      });
+      addPrependCard(cards[i].link, cards[i].name, like.length, userData._id, cardOwnerID, cardID, likesOwnerID);
+    }
+  })
+  .catch(err => {
+    console.log('Ошибка. Запрос не выполнен: ', err);
+  });
+
   //функция включения валидации
-  enableValidation(validationConfig);
-getApi();
+  enableValidation(validateConfig);

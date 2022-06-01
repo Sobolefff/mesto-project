@@ -6,7 +6,15 @@ const nameInput = formElement.querySelector('#name');
 const activityInput = formElement.querySelector('#description');
 const nameProfile = document.querySelector('.profile__title');
 const activityProfile = document.querySelector('.profile__subtitle');
+const profileAvatar = document.querySelector('.profile__avatar');
 
+const editAvatarBtn = document.querySelector('.profile__edit-avatar');
+const editAvatarBtnActive = document.querySelector('.profile__change-avatar');
+
+const popupAvatar = document.querySelector('#popup-avatar-edit');
+const avatarForm = popupAvatar.querySelector('#popup-avatar-form');
+const avatarInput = avatarForm.querySelector('#add-avatar-link');
+const popupSaveAvatarButton = popupAvatar.querySelector('#popup-avatar_save-button');
 // константы попап для карточек
 const popupElementAddCard = document.querySelector('#popup-add-card');
 const buttonAdd = document.querySelector('.profile__add-button');
@@ -21,32 +29,6 @@ const popupImage = document.querySelector('#popup-viewing');
 const buttonImageClose = popupImage.querySelector('.popup__close-button'); 
 const popupImageLink = popupImage.querySelector('.popup__image'); 
 const popupImageTitle = popupImage.querySelector('.popup__image-title');
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
 const cardList = document.querySelector('.elements__list');
 const allPopups = Array.from(document.querySelectorAll('.popup'));
 
@@ -68,8 +50,14 @@ export {
     buttonImageClose,
     popupImageLink,
     popupImageTitle,
-    initialCards,
     cardList,
     allPopups,
-    cardTemplate
+    cardTemplate,
+    editAvatarBtn,
+    editAvatarBtnActive,
+    popupAvatar,
+    avatarForm,
+    avatarInput,
+    profileAvatar,
+    popupSaveAvatarButton
 }

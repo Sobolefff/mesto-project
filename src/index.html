@@ -8,6 +8,7 @@
     <meta name="keywords" content="Фотографии, фотки, места">
     <meta name="author" content="Петр Соболев">
     <title>Место</title>
+    <link rel="shortcut icon" href="<%=require('./images/icons/favicon.svg')%>" type="image/x-icon">
 </head>
 <body class="page">
     <header class="header">
@@ -15,7 +16,10 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img src="<%=require('./images/avatar.jpg')%>" alt="аватар" class="profile__avatar">
+            <button class="profile__edit-avatar">
+                <img src="#" alt="аватар" class="profile__avatar">
+                <span class="profile__change-avatar"></span>
+            </button>
             <div class="profile__info">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
                 <button id="profile__edit-button" type="button" class="profile__edit-button"></button>
@@ -33,6 +37,30 @@
         <p class="footer__copyright">© 2022 Петр Соболев</p>
     </footer>
 
+      <!--Форма добавления карточки-->
+    <div id="popup-add-card" class="popup">
+        <div class="popup__container">
+            <h2 class="popup__heading">Новое место</h2>
+            <form id="popup-add-card-form" name="card-add" class="popup__form" novalidate>
+                <fieldset class="popup__input-container">
+                    <label class="popup__label">
+                        <input id="add-card-title" type="text" name="title" placeholder="Название" value="" class="popup__input-text" minlength="2" maxlength="30" required>
+                        <span class="popup__error" id="add-card-title-error"></span>
+                    </label>
+                    <label class="popup__label">
+                        <input id="add-card-link" type="url" name="link" placeholder="Ссылка на фото" value="" class="popup__input-text" required>
+                        <span class="popup__error" id="add-card-link-error"></span>
+                    </label>
+                </fieldset>
+                <fieldset class="popup__submit">
+                    <button id="popup-add-card__save-button" type="submit" class="popup__save-button">Создать</button>
+                </fieldset>
+            </form>
+            <button type="button" class="popup__close-button"></button>
+        </div>
+      </div>
+
+    <!--форма редактирования профиля-->
     <div id="popup-profile-edit" class="popup">
         <div class="popup__container">
             <h2 class="popup__heading">Редактировать профиль</h2>
@@ -55,27 +83,25 @@
         </div>
     </div>
 
-    <div id='popup-add-card' class="popup">
+    <!--Форма обновления аватара-->
+    <div id="popup-avatar-edit" class="popup">
         <div class="popup__container">
-            <h2 class="popup__heading">Новое место</h2>
-            <form id="popup-add-card-form" name="card-add" class="popup__form" novalidate>
+            <h2 class="popup__heading">Обновить фотографию</h2>
+            <form id="popup-avatar-form" name="avatar-save" class="popup__form" novalidate>
                 <fieldset class="popup__input-container">
                     <label class="popup__label">
-                        <input id="add-card-title" type="text" name="title" placeholder="Название" value="" class="popup__input-text" minlength="2" maxlength="30" required>
-                        <span class="popup__error" id="add-card-title-error"></span>
-                    </label>
-                    <label class="popup__label">
-                        <input id="add-card-link" type="url" name="link" placeholder="Ссылка на фото" value="" class="popup__input-text" required>
-                        <span class="popup__error" id="add-card-link-error"></span>
+                        <input id="add-avatar-link" type="url" name="link" placeholder="Ссылка на фото" value="" class="popup__input-text" required>
+                        <span class="popup__error" id="add-avatar-link-error"></span>
                     </label>
                 </fieldset>
                 <fieldset class="popup__submit">
-                    <button id="popup-add-card__save-button" type="submit" class="popup__save-button">Создать</button>
+                    <button id="popup-avatar_save-button" type="submit" class="popup__save-button">Сохранить</button>
                 </fieldset>
             </form>
             <button type="button" class="popup__close-button"></button>
         </div>
       </div>
+    
 
       <div id="popup-viewing" class="popup popup_viewing">
         <div class="popup__image-container">
@@ -91,7 +117,10 @@
             <img src="#" alt="шаблон" class="element__image">
             <div class="element__description">
                 <h3 class="element__title">123</h3>
-                <button type="button" class="element__like-link"></button>
+                <div>
+                    <button type="button" class="element__like-link"></button>
+                    <p class="element__likes-counter"></p>
+                </div>
             </div>
         </li>
     </template>

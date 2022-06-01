@@ -1,4 +1,4 @@
-export const validationConfig = {
+export const validateConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input-text',
     submitButtonSelector: '.popup__save-button',

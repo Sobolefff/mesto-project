@@ -1,5 +1,4 @@
-.element__like-link {
-    margin-right: 5px;
+.element__like-link {  
     min-width: 22px;
     height: 19px;
     background-image: url(../../../images/icons/like.svg);
