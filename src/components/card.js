@@ -1,4 +1,4 @@
-import { popupImage, cardList } from "./constants.js";
+import { popupImage, cardList, popupImageLink, popupImageTitle } from "./constants.js";
 import { openPopup } from "./modal.js";
 import { delCard, likCard} from './api.js'
 
@@ -60,9 +60,9 @@ function createCard
   likeShow.textContent = `${likes}`;
 
   image.addEventListener('click', function () {
-    imageGallery.src = `${placeLinkValue}`;
-    imageGallery.alt = `${placeDescriptionValue}`;
-    figcaptionImageGallery.textContent = `${placeDescriptionValue}`;
+    popupImageLink.src = `${placeLinkValue}`;
+    popupImageLink.alt = `${placeDescriptionValue}`;
+    popupImageTitle.textContent = `${placeDescriptionValue}`;
 
     openPopup(popupImage);
   });
