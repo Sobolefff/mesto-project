@@ -98,7 +98,7 @@ const disabledButton = button => {
 
   Promise.all([getUserInfo(), getCards()])
   .then(([userData, cards]) => {
-    
+    cards.reverse();
     profileAvatar.src = userData.avatar;
     nameProfile.textContent = userData.name;
     activityProfile.textContent = userData.about;
